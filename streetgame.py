@@ -61,7 +61,7 @@ def generate_map_1():
             lat = st_data["last_clicked"]["lat"]
             lng = st_data["last_clicked"]["lng"]
             r = requests.get(f"https://api.openstreetcam.org/2.0/photo/?lat={lat}&lng={lng}&radius=50")
-            image = [x["fileurlLTh"] for x in json.loads(r.text)["result"]["data"]][0]
+            image = [x["fileurlProc"] for x in json.loads(r.text)["result"]["data"]][-1]
             st.image(image,
                 width=900)
             jugar = True
